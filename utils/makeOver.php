@@ -63,6 +63,12 @@
             return $e;
         }
     }
+    public function changePassword($new_password,$id){
+      $sql  = "UPDATE $this->table SET password = :password WHERE id = :id";
+      $stmt = $this->conn->prepare($sql);
+      $user = $stmt->execute(['password'=>$new_password,'id'=>$id]);
+      return $user;
+    }
     }
 
     class AuthSystem extends Auth{

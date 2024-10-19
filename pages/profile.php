@@ -54,6 +54,9 @@
                     <div class="row pt-1">
                       <button type="submit" class="btn btn-primary">แก้ไขโปรไฟล์</button>
                     </div>
+                    <div class="row pt-1">
+                      <a href="change_password.php" class="btn btn-warning">เปลี่ยนรหัสผ่าน</a>
+                    </div>
                     
                   </div>
                   
