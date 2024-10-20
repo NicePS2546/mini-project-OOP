@@ -64,8 +64,10 @@ trait AuthCore
     public function delete_user($table,$table2,$id){
         try {
             $this->conn->beginTransaction();
-            $delete_user = $this->deleteById($table, $id);
-            $delete_user_info = $this->deleteById($table2, $id);
+            $this->table = $table;
+            $delete_user = $this->deleteById($id);
+            $this->table = $table2;
+            $delete_user_info = $this->deleteById($id);
             $this->conn->commit();
             return $delete_user && $delete_user_info;
         }catch(PDOException $e) {

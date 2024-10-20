@@ -1,6 +1,6 @@
 <?php 
-include "header.php";
-include "user_manage.php";
+include_once "header.php";
+include_once "../user_manage.php";
 include "footer.php";
        ?>
 <!DOCTYPE html>

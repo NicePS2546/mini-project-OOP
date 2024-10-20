@@ -64,7 +64,7 @@ $p_url = $_GET['p_url'] ?? null;
                     <div class="d-flex gap-2">
                         <form action="update_user_data.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-                            <input type="hidden" name="p_url" value="<?php echo htmlspecialchars($p_url); ?>">
+                            <input type="hidden" name="p_url" value="<?php echo htmlspecialchars( $p_url); ?>">
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
                         <form action="delete_data.php" method="POST" style="display:inline;">

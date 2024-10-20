@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include_once "header.php";
 include "footer.php";
 include_once "db_config.php";
 
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <div class="d-flex justify-content-between">
                                             <button id="submit" type="submit" class="btn btn-primary">ตกลง</button>
                                             <button type="button" class="btn btn-primary"><a
-                                                    href="index.php">ย้อนกลับ</a></button>
+                                                    href="../index.php">ย้อนกลับ</a></button>
                                         </div>
                                     </div>
 

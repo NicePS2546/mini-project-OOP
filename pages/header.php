@@ -3,8 +3,7 @@
 
     include "session_manage.php";
     include_once 'user_manage.php';
-
-
+    
 ?>
      
 <!DOCTYPE html>
