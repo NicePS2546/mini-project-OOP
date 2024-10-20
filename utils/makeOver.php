@@ -1,6 +1,6 @@
 <?php
     
-    include "abtract_class.php";
+    include_once "abtract_class.php";
     class Server extends DB_connection{
         
     }
@@ -20,8 +20,9 @@
                 $total -= $discount;
             }
             $this->taxFee = $total * (7 / 100);
-            $this->total += $this->taxFee;
-    
+            $total += $this->taxFee;
+
+            $this->total = $total;
             $this->table = $tablename;
             $this->roomType = $roomType;
             $this->reservedBy = $reservedBy;
@@ -32,7 +33,7 @@
             $this->dayAmount = $dayAmount;
             $this->id = $id;
     
-            return true;
+            
         }
         public function set_table($table){
           $this->table = $table;
@@ -72,7 +73,9 @@
     }
 
     class AuthSystem extends Auth{
-
+      public function set_table($table){
+        $this->table = $table;
+      }
     }
 
     class UserInfoSystem extends UserSystem{

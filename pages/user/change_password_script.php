@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 showConfirmButton: false,
                 timer: 2000
             }).then(function() {
-                window.location = "index.php";  
+                window.location = "../index.php";  
             });
         }, 1000);
     </script>';

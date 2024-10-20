@@ -1,6 +1,8 @@
 <?php
+include_once 'header.php';
 require_once 'db_config.php';
-include 'header.php';
+include_once '../component/back.php';
+
 $center = "style='text-align:center;'";
 $reservation->set_table($table);
 $reservations = $reservation->getAllReservation();
@@ -65,11 +67,11 @@ $reservations = $reservation->getAllReservation();
 
                 <td>
                     <div class="d-flex gap-2">
-                        <form action="edit_form.php" method="post">
+                        <form action="../user/edit_form.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $reservation['id']; ?>">
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
-                        <form action="delete_data.php" method="POST" style="display:inline;">
+                        <form action="../../pages/user/delete_data.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $reservation['id']; ?>">
                             <!-- <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-sm"> -->
                             <button type="button" class="btn btn-danger delete-button"
@@ -84,9 +86,7 @@ $reservations = $reservation->getAllReservation();
             }
             ?>
         </table>
-        <div>
-            <a class="btn btn-secondary" href="index.php">ย้อนกลับไปหน้าหลัก</a>
-        </div>
+        <?php echo $back_bttn ?>
     </div>
     <script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
     <!-- DataTable CSS -->
@@ -118,7 +118,7 @@ $reservations = $reservation->getAllReservation();
                     // หากผู้ใชยืนยัน ให ้ส ้ งค่าฟอร์มไปยัง ่ delete.php เพื่อลบข ้อมูล
                     const form = document.createElement('form');
                     form.method = 'POST';
-                    form.action = 'delete_data.php';
+                    form.action = '../user/delete_data.php';
                     const input = document.createElement('input');
                     input.type = 'hidden';
                     input.name = 'id';

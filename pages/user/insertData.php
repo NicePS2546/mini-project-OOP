@@ -5,6 +5,7 @@
     $user->set_table($userInfoTable);
     $userInfo = $user->getRowById($_SESSION['id']);
     $fullname = $userInfo['fname']." ".$userInfo['lname'];
+    
 ?>
 
 
@@ -15,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="styleSheet" href="../css/custom.css">
+    <link rel="styleSheet" href="../../css/custom.css">
 </head>
 
 <body>
@@ -32,13 +33,13 @@
 
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="reservedBy" value="<?php echo $fullname ?>" placeholder="ชื่อผู้เข้าจอง"
-                                    disabled>
+                                    readonly>
                                 <div class="invalid-feedback">โปรดใส่ชื่อผู้เข้าจองก่อนกดยืนยัน</div>
                             </div>
 
                             <div class="col-md-12">
                                 <input class="form-control" type="email" name="email" placeholder="Email ผู้เข้าจอง"
-                                    required>
+                                    value="<?php echo $userInfo['email'] ?>" readonly>
                                 <div class="invalid-feedback">โปรดใส่อีเมลล์ผู้เข้าจองก่อนกดยืนยัน</div>
                             </div>
 
@@ -87,7 +88,7 @@
                                 <div class="d-flex justify-content-between">
                                     <button id="submit" type="submit" class="btn btn-primary">ตกลง</button>
                                     <button type="button" class="btn btn-primary"><a
-                                            href="index.php">ย้อนกลับ</a></button>
+                                            href="../index.php">ย้อนกลับ</a></button>
                                 </div>
                             </div>
 

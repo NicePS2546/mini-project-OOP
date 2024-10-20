@@ -1,6 +1,7 @@
 <?php
-include 'db_config.php';
-include 'header.php';
+include_once 'header.php';
+include_once 'db_config.php';
+
 include 'footer.php';
 if (isset($_POST['id'])) {
     $id = $_POST['id'];

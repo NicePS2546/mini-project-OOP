@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 include "footer.php";
-include "db_config.php";
+include_once "db_config.php";
 
 
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
-            <link rel="styleSheet" href="../css/custom.css">
+            <link rel="styleSheet" href="../../css/custom.css">
         </head>
 
         <body>

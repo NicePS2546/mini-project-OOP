@@ -1,7 +1,5 @@
 <?php
 
-include "user_manage.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

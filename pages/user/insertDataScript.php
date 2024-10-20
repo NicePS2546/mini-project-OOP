@@ -1,6 +1,6 @@
 <?php
     
-    include 'db_config.php';
+    include '../db_config.php';
     
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){

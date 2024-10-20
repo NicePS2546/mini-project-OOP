@@ -1,8 +1,11 @@
 <?php
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    };
     include "session_manage.php"; 
     include "userInfo_manage.php";
-    $baseUrl = "http://localhost/65-41/mini-php-project-OOP/pages/admin/";
+    $baseHost = "http://127.0.0.1";
+    $baseUrl = $baseHost."/65-41/mini-php-project-OOP/pages/admin/";
 ?>
      
 <!DOCTYPE html>

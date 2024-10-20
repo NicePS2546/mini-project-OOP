@@ -17,7 +17,7 @@
     
 
     interface Delete{
-        public function deleteById($table,$id);
+        public function deleteById($id);
     }
     interface Get{
        
@@ -31,6 +31,7 @@
     interface Reservation{
         public function reservation();
         public function getAllReservation();
+        public function getReservationById($id);
     }
 
 

@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             showConfirmButton: true,
                             // timer: 1500
                         }).then(function() {
-                        window.location = "show_table.php"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
+                        window.location = "../admin/show_table.php"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
                     });
                         }, 1000);
                         </script>';

@@ -1,8 +1,8 @@
 <?php
     if(session_status()==PHP_SESSION_NONE)session_start();
 
-    include "session_manage.php";
-    include_once 'user_manage.php';
+    include "../session_manage.php";
+    include_once "../user_manage.php";
 
 
 ?>
@@ -36,7 +36,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="../pages/user/profile.php"><img src="<?php echo $avatar ?>" alt="myphoto" class="rounded-pill
+            <a class="navbar-brand" href="../index.php"><img src="<?php echo $avatar ?>" alt="myphoto" class="rounded-pill
 me-2 text-uppercase" style="width: 30px;"><?php echo strtoupper($_SESSION['fullname']); ?></a>
         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

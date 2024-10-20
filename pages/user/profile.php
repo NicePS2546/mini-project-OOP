@@ -1,4 +1,5 @@
-<?php include "user_manage.php";
+<?php 
+      require_once "../../pages/user_manage.php";
       include "header.php";
       include "footer.php";
 ?>
@@ -66,7 +67,7 @@
              
             </div>
             <div class="d-flex justify-content-end" >
-                        <a href="index.php" class="btn btn-primary">Back</a>
+                        <a href="../index.php" class="btn btn-primary">Back</a>
             </div>
           </div>
           

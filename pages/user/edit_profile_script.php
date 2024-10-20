@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lname = $_POST['lname'];
     $email = $_POST['email'];
 
-    $targetDir = "../image/upload/$id/";
+    $targetDir = "../../image/upload/$id/";
     $upload_picture = true;
     $user->set_table($userInfoTable);
     $getUser = $user->getRowById($id);
