@@ -18,19 +18,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $upload_picture = true;
     $user->set_table($userInfoTable);
     $getUser = $user->getRowById($id);
+    $allowTypes = array('jpg', 'png', 'jpeg', 'gif'); // ประเภทไฟล์ที่อนุญาต
+    $fileType = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+
+
+
     // Check if the file is uploaded
     if (isset($file) && $file['error'] == UPLOAD_ERR_OK) {
+        if (in_array($fileType, $allowTypes)) { // ตรวจสอบวา่ อยใู่ นประเภทที่อนุญาตหรือไม่
         // Call the upload function if a file is uploaded
+        $userInfo->set_table($userInfoTable);
+        $upload_picture = $userInfo->uploadPic($file, $targetDir,$id);
         if ($getUser && !empty($getUser['avatar'])) {
             $oldFile = $targetDir . $getUser['avatar'];
-            $userInfo->set_table($userInfoTable);
-            $upload_picture = $userInfo->uploadPic($file, $targetDir,$id);
+            
             if($upload_picture && file_exists($oldFile)){
                 unlink($oldFile); // Deletes the old file
             };
         }
-       
     }
+}
     $userInfo->set_table($userInfoTable);
     $update = $userInfo->update_userInfo('users',$fname,$lname,$email,$id);
     echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';

@@ -6,7 +6,7 @@ require_once '../../loginCrud/db_config.php';
 
 $id = $_POST['id'] ?? '';
 $p_url = $_POST['p_url'];
-$getUser = $user->getSole( $table, $userInfoTable, 'id', 'id',$id );
+$getUser = $user->getUserById( $id );
 $default_img = "https://firebasestorage.googleapis.com/v0/b/loginsys-b8d67.appspot.com/o/default_avatar.jpg?alt=media&token=7f437efa-c1af-46c6-a652-6445ea259caf";
 $avatar = $getUser['avatar'] == "default_avatar" ? $default_img : "../../image/upload/$id/" . $getUser['avatar'];
 $fullname = ((isset($getUser['fname']) && $getUser['fname'] != "ยังไม่ได้ตั้ง") && (isset($getUser['lname']) && $getUser['lname'] != "ยังไม่ได้ตั้ง"))

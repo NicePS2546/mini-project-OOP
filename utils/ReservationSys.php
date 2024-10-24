@@ -41,16 +41,49 @@
     }
 
     class UserSystem extends User{
-      use GetDynamic;
+      
         public function set_table($table){
             $this->table = $table;
         }
-        public function getAll($pk_tb, $fk_tb, $fk_key, $pk_key){
-         return $this->getAllJoin($pk_tb, $fk_tb, $fk_key, $pk_key);
+        public function getAll(){
+          
+          try {
+              $conn = $this->conn;
+              $sql = "SELECT users.*, user_info.*  
+                      FROM users
+                      LEFT JOIN user_info ON users.id = user_info.id";
+              $smt = $conn->prepare($sql);
+              $smt->execute();
+              $data = $smt->fetchAll(PDO::FETCH_ASSOC);
+              return $data;
+          } catch (PDOException $e) {
+              return $e;
+          }
         
     }
-    public function getSole($pk_tb, $fk_tb, $fk_key, $pk_key, $id){
-      return $this->getSoleJoin($pk_tb, $fk_tb, $fk_key, $pk_key, $id);
+    public function getUserById($id){
+      try {
+              $conn = $this->conn;
+              $sql = "SELECT users.id,
+                      users.username,
+                      users.password,
+                      users.email,
+                      users.role,
+                      users.reg_date,
+                      user_info.id as user_info_id,
+                      user_info.fname, 
+                      user_info.lname, 
+                      user_info.avatar
+                      FROM users
+                      LEFT JOIN user_info ON users.id = user_info.id 
+                      WHERE users.id = :id";
+              $smt = $conn->prepare($sql);
+              $smt->execute(['id'=>$id]);
+              $data = $smt->fetch(PDO::FETCH_ASSOC);
+              return $data;
+          } catch (PDOException $e) {
+              return $e;
+          }
     }
     public function getUserByRole($role){
       $conn = $this->conn;

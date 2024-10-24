@@ -8,9 +8,9 @@
         <a href="../pages/user/show_reserved.php" class="btn btn-success">Show Reserved Room</a>
         <a href="../pages/admin/show_table.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning" class="btn btn-success">Show Reservation Table </a>
         <a href="../pages/admin/show_table_user.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning">User Table</a>
-        <a href="../pages/admin/user_info_table.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning">User Info Table</a>
+        <!-- <a href="../pages/admin/user_info_table.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning">User Info Table</a>
         <a href="../pages/admin/admin_info_table.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning">Admin Info Table</a>
-        <a href="../pages/admin/all_userInfo_table.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning">All User Info</a>
+        <a href="../pages/admin/all_userInfo_table.php" <?php echo $_SESSION['role'] == 1 ? "" : "style='display:none;'" ?> class="btn btn-warning">All User Info</a> -->
         <!-- <a href="" class="btn btn-primary">Insert Data with Form by exec</a>
         <a href="" class="btn btn-primary">Insert Data with SQL by Prepared Statement=> :</a>
         <a href="" class="btn btn-primary">Insert Data with SQL by Prepared Statement=> ?</a>

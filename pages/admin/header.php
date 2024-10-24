@@ -5,7 +5,7 @@
     include "session_manage.php"; 
     include "userInfo_manage.php";
     $baseHost = "http://127.0.0.1";
-    $baseUrl = $baseHost."/65-41/mini-php-project-OOP/pages/admin/";
+    $baseUrl = $baseHost."/mini-project-OOP/pages/admin/";
 ?>
      
 <!DOCTYPE html>
