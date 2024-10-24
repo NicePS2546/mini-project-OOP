@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 
 
         $id = $_POST['id'] ?? $_GET['id'];
+        $url = $_POST['url'] ?? '';
         $reservation = $reservation->getSole($id);
         echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
         ?>
@@ -92,8 +93,8 @@ error_reporting(E_ALL);
                                     <div class="form-button mt-3">
                                         <div class="d-flex justify-content-between">
                                             <button id="submit" type="submit" class="btn btn-primary">ตกลง</button>
-                                            <button type="button" class="btn btn-primary"><a
-                                                    href="../index.php">ย้อนกลับ</a></button>
+                                            <a class="btn btn-primary"
+                                                    href="<?php echo $url != '' ? '../admin/show_table.php' : '../index'  ?>">ย้อนกลับ</a>
                                         </div>
                                     </div>
 

@@ -7,6 +7,16 @@ $center = "style='text-align:center;'";
 $reservation->set_table($table);
 $reservations = $reservation->getAllReservation();
 $index = 1;
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
+// Get the host name (domain)
+$host = $_SERVER['HTTP_HOST'];
+
+// Get the request URI (path and query string)
+$requestUri = $_SERVER['REQUEST_URI'];
+
+// Combine them to get the full URL
+$currentUrl = $protocol . $host . $requestUri;
 ?>
 
 
@@ -66,6 +76,7 @@ $index = 1;
 
                         <form action="../user/edit_form.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $reservation['id']; ?>">
+                            <input type="hidden" name="url" value="<?php echo $currentUrl; ?>">
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
                         <form action="../../pages/user/delete_data.php" method="POST" style="display:inline;">
