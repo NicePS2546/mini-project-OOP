@@ -99,8 +99,41 @@ $index = 1;
 
 
     </script>
-   
-    
+    <script>
+        // ฟังก์ชันสาหรับแสดงกล่องยืนยัน ํ SweetAlert2
+        function showDeleteConfirmation(id) {
+            Swal.fire({
+                title: 'คุณแน่ใจหรือไม่?',
+                text: 'คุณจะไม่สามารถเรียกคืนข้อมูลกลับได้!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ลบ',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // หากผู้ใชยืนยัน ให ้ส ้ งค่าฟอร์มไปยัง ่ delete.php เพื่อลบข ้อมูล
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'delete_reservation.php';
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'id';
+                    input.value = id;
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+        // แนบตัวตรวจจับเหตุการณ์คลิกกับองค์ปุ่ มลบทั้งหมดที่มีคลาส delete-button
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        deleteButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const get_id = button.getAttribute('data-user-id');
+                showDeleteConfirmation(get_id);
+            });
+        });
+    </script>
 
 </body>
 <!-- Modal สําหรับแสดงข้อมูลสมาชิก -->
@@ -157,8 +190,8 @@ $index = 1;
                     let member = reserved.member == 1 ? 'เป็นสมาชิก' :'ไม่ได้เป็นสมาชิก'
                     $('#reserved-name').text(reserved.reservedBy); // แสดงข้อมูลใน Modal โดยใช้ ID ของแต่ละข้อมูล
                     $('#reserved-email').text(reserved.email);
-                    $('#reserved-day').text(reserved.dayAmount);
-                    $('#reserved-people').text(reserved.peopleAmount);
+                    $('#reserved-day').text(reserved.dayAmount+" วัน");
+                    $('#reserved-people').text(reserved.peopleAmount+" คน");
                     $('#reserved-room').text(roomType);
                     $('#reserved-member').text(member);
                     $('#reserved-price').text(reserved.price+" บาท");

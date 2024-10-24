@@ -2,15 +2,13 @@
 include_once "header.php";
 include "footer.php";
 include_once "db_config.php";
+error_reporting(E_ALL);
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['id'])) {
-        $id = $_POST['id'];
+        $id = $_POST['id'] ?? $_GET['id'];
         $reservation = $reservation->getSole($id);
         echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
-
         ?>
 
         <!DOCTYPE html>
@@ -130,24 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </html>
         <?php
-    } else {
-        echo '<script>
-        setTimeout(function() {
-                Swal.fire({
-                    position: "center",
-                    icon: "error",
-                    title: "เกิดข้อผิดพลาด",
-                    text: "ไม่มี ID ส่งมา",
-                    showConfirmButton: true,
-                    // timer: 1500
-                    }).then(function() {
-                window.location = "show_table.php"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
-                    });
-                }, 1000);
-            </script>';
-    }
-    ;
-}
+    
+
 
 
 ?>

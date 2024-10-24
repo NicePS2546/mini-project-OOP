@@ -12,7 +12,7 @@
     
             if ($peopleAmount > 4) {
                 $limitBreak = $total * 20 / 100;
-                $total += $limitBreak;
+                $total -= $limitBreak;
             }
     
             if ($isMember === true) {

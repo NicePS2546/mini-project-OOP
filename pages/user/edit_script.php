@@ -3,6 +3,7 @@
 include 'db_config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
     $id = $_POST['id'];
     $name = $_POST['reservedBy'];
     $roomType = $_POST['roomType'];
@@ -11,6 +12,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $peopleAmount = $_POST['peopleAmount'];
     $isMember = filter_var($_POST['member'], FILTER_VALIDATE_BOOLEAN);
     $price = 0;
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+    if($peopleAmount >= 6){
+        echo '<script>
+        setTimeout(function() {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "จำนวณผู้เข้าพักมากกกว่าที่กำหนดสูงสุด 5 คน",
+                showConfirmButton: true,
+                // timer: 1500
+            }).then(function() {
+            window.location = "edit_form.php?id='.urlencode($id).'"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
+            
+        });
+            }, 1000);
+            </script>';
+exit();
+    }
+    
     if ($roomType === 'normal') {
         $price = 850;
     } else if ($roomType === 'deluxe') {
@@ -25,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $callback = $reservation->updateById($id);
 
     if ($callback) {
-        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
         echo '<script>
                     setTimeout(function() {
                         Swal.fire({
@@ -49,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     showConfirmButton: true,
                     // timer: 1500
                     }).then(function() {
-                window.location = "insertData.php"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
+                window.location = "edit_form.php"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
                     });
                 }, 1000);
             </script>';

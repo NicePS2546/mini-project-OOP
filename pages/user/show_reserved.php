@@ -144,8 +144,8 @@ $reservations = $reservation->getReservationById($_SESSION['id']);
                     let member = reserved.member == 1 ? 'เป็นสมาชิก' :'ไม่ได้เป็นสมาชิก'                    
                     $('#reserved-name').text(reserved.reservedBy); // แสดงข้อมูลใน Modal โดยใช้ ID ของแต่ละข้อมูล
                     $('#reserved-email').text(reserved.email);
-                    $('#reserved-day').text(reserved.dayAmount);
-                    $('#reserved-people').text(reserved.peopleAmount);
+                    $('#reserved-day').text(reserved.dayAmount+" วัน");
+                    $('#reserved-people').text(reserved.peopleAmount+" คน");
                     $('#reserved-room').text(roomType);
                     $('#reserved-member').text(member);
                     $('#reserved-price').text(reserved.price+" บาท");
