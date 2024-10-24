@@ -8,6 +8,7 @@ include "db_config.php";
 
 // Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
     $file = $_FILES['picture'];
     $id = $_POST['id'];
     $fname = $_POST['fname'];
@@ -20,8 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $getUser = $user->getRowById($id);
     $allowTypes = array('jpg', 'png', 'jpeg', 'gif'); // ประเภทไฟล์ที่อนุญาต
     $fileType = pathinfo($file['name'], PATHINFO_EXTENSION);
-
-
 
 
     // Check if the file is uploaded
@@ -37,11 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 unlink($oldFile); // Deletes the old file
             };
         }
+    }else{
+        echo '<script>
+    setTimeout(function() {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "ประเภทไฟล์ไม่รองรับ",
+                showConfirmButton: true,
+                // timer: 1500
+                }).then(function() {
+            window.location = "edit_profile.php"; // Redirect to.. ปรับแก ้ชอไฟล์ตามที่ต้องการให ้ไป ื่
+                });
+            }, 1000);
+        </script>';
+        exit();
     }
 }
     $userInfo->set_table($userInfoTable);
     $update = $userInfo->update_userInfo('users',$fname,$lname,$email,$id);
-    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+    
     
     if ($upload_picture && $update) {
         $user->set_table($userInfoTable);
