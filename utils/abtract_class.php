@@ -130,13 +130,14 @@ abstract class Reserv implements Reservation, Delete, Update
     {
         try {
             $table = $this->table;
+            
             $sql = "DELETE FROM $table WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $result = $stmt->execute(['id' => $id]);
             echo "<script>console.log('Deleted Users')</script>";
             return $result;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return false;
         }
     }
     public function reservation()

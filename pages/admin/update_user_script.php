@@ -19,11 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $allowTypes = array('jpg', 'png', 'jpeg', 'gif'); // ประเภทไฟล์ที่อนุญาต
     if (isset($file) && $file['error'] == UPLOAD_ERR_OK) {
         if (in_array($fileType, $allowTypes)) { // ตรวจสอบวา่ อยใู่ นประเภทที่อนุญาตหรือไม่
+        $userInfo->set_table($userInfoTable);
         $upload_picture = $userInfo->uploadPic($file, $targetDir,$id);
         // Call the upload function if a file is uploaded
         if ($getUser && !empty($getUser['avatar'])) {
             $oldFile = $targetDir . $getUser['avatar'];
-            $userInfo->set_table($userInfoTable);
+           
             
             if($upload_picture && file_exists($oldFile)){
                 unlink($oldFile); // Deletes the old file

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2024 at 02:11 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Oct 25, 2024 at 06:23 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -122,16 +122,16 @@ CREATE TABLE `user_info` (
 --
 
 INSERT INTO `user_info` (`id`, `fname`, `lname`, `email`, `avatar`, `role`) VALUES
-(7, 'Pasitsxaa0', 'Bungosedx', 'maoezxooo@gmail.com', '993706410671a38fe7dc607.53454396.jpg', 1),
-(10, 'Nicexasx00', 'lnwzasss', 'maoezxooo1@gmail.com', '141155937766e334cde7a316.23134311.jpg', 1),
+(7, 'Pasitsxaa0', 'Bungosedx', 'maoezxooo@gmail.com', '2110009756671b1c4c1e42d9.33376232.gif', 1),
+(10, 'Nicexasx1', 'lnwzasss', 'maoezxooo1@gmail.com', '1630229427671b196fda1cd2.76911472.gif', 1),
 (11, 'sdasd', 'ยังไม่ได้ตั้ง', 'maoezxooo12@gmail.com', '183674456166e336056ecbc7.96537038.png', 1),
-(12, 'x', 'ax', 'maoexasdzxooo@gmail.com', '167417473667149652668d97.44860183.png', 0),
-(13, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', '12345678@gmail.com', '5418232186719dffd7c8be8.98982102.jpg', 1),
-(17, 'NIcexx', 'SimpBigBalls', 'admin@gmail.com', '1659086096714cd37ab01b8.38341400.gif', 1),
-(18, '0', 'ยังไม่ได้ตั้ง00', 'asd@xgmail.com', '442089347671a054c722766.86311419.png', 0),
-(19, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', 'asad@xgmail.com', 'default_avatar', 0),
-(23, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', 'maoezxooo@gmail.com1', 'default_avatar', 0),
-(27, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', 'maoezxooo@gmail.comx', 'default_avatar', 0);
+(12, 'x', 'ax', 'maoexasdzxooo@gmail.com', '1490918208671b1c5d16d484.47183657.gif', 0),
+(13, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', '12345678@gmail.com', '1116520733671b1ca42067c0.15681340.gif', 1),
+(17, 'NIcexx', 'SimpBigBalls', 'admin@gmail.com', '1094796357671b1cd6e3f0e9.74725675.gif', 1),
+(18, '0', 'ยังไม่ได้ตั้ง00', 'asd@xgmail.com', '386644203671b1ceb7d3df5.89117388.gif', 0),
+(19, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', 'asad@xgmail.com', '1065971510671b1cf7447e79.80180748.gif', 0),
+(23, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', 'maoezxooo@gmail.com1', '1762169135671b1d02a3ecd5.94736841.gif', 0),
+(27, 'ยังไม่ได้ตั้ง', 'ยังไม่ได้ตั้ง', 'maoezxooo@gmail.comx', '1630072605671b1d0a14da54.91602229.gif', 0);
 
 --
 -- Indexes for dumped tables

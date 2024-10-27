@@ -38,6 +38,53 @@
         public function set_table($table){
           $this->table = $table;
         }
+        public function feedback($title,$message,$user_id,$name){
+          try{
+          $sql1 = "INSERT INTO feedback (title,message,user_id,name) VALUES (:title,:message,:user_id,:name)";
+          $stmt = $this->conn->prepare($sql1);
+          $data = $stmt->execute(['title'=>$title,'message'=>$message,'user_id'=>$user_id,'name'=>$name]);
+          return ['message'=>'success','status'=>$data];
+        }catch(PDOException $e){
+          return ['message'=> $e->getMessage(),'status'=>false];
+        }
+        }
+        public function getAll_Feedback(){
+          try {
+            $conn = $this->conn;
+            $sql = "SELECT *  FROM feedback ";
+            $smt = $conn->prepare($sql);
+            $smt->execute();
+            $data = $smt->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (PDOException $e) {
+            return $e;
+        }
+        }
+        public function getAll_FeedbackById($id){
+          try {
+            $conn = $this->conn;
+            $sql = "SELECT *  FROM feedback WHERE user_id = :id ";
+            $smt = $conn->prepare($sql);
+            $smt->execute(['id'=>$id]);
+            $data = $smt->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (PDOException $e) {
+            return $e;
+        }
+        }
+        
+        public function get_feedback_by_id($id){
+          $conn = $this->conn;
+        try {
+            $sql = "SELECT * FROM feedback WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+        }
     }
 
     class UserSystem extends User{
@@ -133,10 +180,11 @@
                   $sql = "UPDATE $this->table SET 
                   avatar = :avatar
                   WHERE id = :id";
+                  
+
                   // Prepare statement
                   $stmt = $this->conn->prepare($sql);
                   $upload = $stmt->execute(["avatar" => $randomFileName, "id" => $id]);
-                  $_SESSION['avatar'] = $targetFile;
           
                   return $upload;
           
