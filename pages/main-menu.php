@@ -19,5 +19,7 @@
         <a href="" class="btn btn-primary">Insert Data with Form by PDO</a>
         <a href="" class="btn btn-primary">View Student Data</a> -->
     </div>
+    
 </div>
+<img class="rounded mx-auto d-block" src="../image/relation.png" width="770px">
 <!-- End Content -->
