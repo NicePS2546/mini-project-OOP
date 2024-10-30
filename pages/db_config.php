@@ -1,5 +1,20 @@
 <?php
-include "../utils/makeOver.php";
+
+
+$backtrace = debug_backtrace();
+
+// Get the file that included db_config.php
+$callerFile = isset($backtrace[0]['file']) ? $backtrace[0]['file'] : '';
+
+// Check if profile.php is the file that included db_config.php
+if (strpos($callerFile, '../../pages') !== false) {
+    // profile.php included this file
+    
+    include '../utils/ReservationSys.php';
+}else{
+    include (__DIR__ . '/../utils/ReservationSys.php');
+}
+
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

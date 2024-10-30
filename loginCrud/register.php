@@ -41,7 +41,7 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
 
-                    <form class="d-flex  flex-rows card p-5" action='register_script.php' method='post'>
+                    <form class="d-flex  flex-rows card p-5" action='register_script.php'  method='post' onsubmit="return validatePassword()">
 
                         <!-- Email input -->
 
@@ -56,16 +56,24 @@
                         <div data-mdb-input-init class="form-outline form-floating mb-4">
 
                             <input type="email" id="email" name="email" class="form-control form-control-lg"
-                                placeholder="Enter Email" />
+                                placeholder="Enter Email" required />
                             <label class="form-label" for="email">Email</label>
                         </div>
 
                         <!-- Password input -->
                         <div data-mdb-input-init class="form-outline form-floating mb-3">
 
-                            <input type="password" id="password" name="password" class="form-control form-control-lg"
+                            <input type="password" id="password" required name="password" class="form-control form-control-lg"
                                 placeholder="Enter password" />
                             <label class="form-label" for="password">Password</label>
+                            <small id="password_error" style="color: red;"></small>
+                        </div>
+                        <div data-mdb-input-init class="form-outline form-floating mb-3">
+
+                            <input type="password" id="confirm_password" required name="confirm_password" class="form-control form-control-lg"
+                                placeholder="Enter password" />
+                            <label class="form-label" for="confirm_password">Confirm Password</label>
+                            <small id="confirm_password_error" style="color: red;"></small>
                         </div>
 
 
@@ -85,6 +93,43 @@
     </section>
 
 </body>
+<script>
+    function validatePassword() {
+        let isValid = true;
+        const passowordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm_password');
+        
+        const passwordError = document.getElementById('password_error');
+        const confirmPasswordError = document.getElementById('confirm_password_error');
 
+        const password = passowordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
 
+        // Reset error messages and input styles
+        passwordError.innerText = '';
+        confirmPasswordError.innerText = '';
+
+        passwordError.style.borderColor = '';
+        confirmPasswordInput.style.borderColor = '';
+
+        // Define password criteria
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        // Validate new password criteria
+        if (!password.match(passwordRegex)) {
+            passwordError.innerText = "รหัสผ่านต้องประกอบด้วยอย่างน้อย 8 ตัวอักษร, มีตัวอักษรพิมพ์ใหญ่, พิมพ์เล็ก, ตัวเลข และสัญลักษณ์พิเศษ";
+            passwordError.style.borderColor = 'red';
+            isValid = false;
+        }
+
+        // Validate password match
+        if (password !== confirmPassword) {
+            confirmPasswordError.innerText = "รหัสผ่านใหม่ไม่ตรงกับการยืนยัน";
+            confirmPasswordInput.style.borderColor = 'red';
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
 </html>

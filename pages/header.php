@@ -1,9 +1,9 @@
 <?php
     if(session_status()==PHP_SESSION_NONE)session_start();
 
-    include "session_manage.php"; 
-
-
+    include "session_manage.php";
+    include_once 'user_manage.php';
+    
 ?>
      
 <!DOCTYPE html>
@@ -35,9 +35,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="profile.php"><img src="<?php echo $_SESSION['avatar'] ?>" alt="myphoto" class="rounded-pill
+            <a class="navbar-brand" href="../pages/user/profile.php"><img src="<?php echo $avatar ?>" alt="myphoto" class="rounded-pill
 me-2 text-uppercase" style="width: 30px;"><?php echo strtoupper($_SESSION['fullname']); ?></a>
-        <?php echo $_SESSION['avatar'] ?>
+        
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bstarget="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 arialabel="Toggle navigation">

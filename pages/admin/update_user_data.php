@@ -4,34 +4,13 @@
       require_once '../../loginCrud/db_config.php';
 
       $id = $_POST['id'] ?? '';
-      $p_url = $_POST['p_url'] ?? null;
-      $getUser = $user->getSole( $table, $userInfoTable, 'id','id', $id );
+      $getUser = $user->getUserById( $id );
       $default_img = "https://firebasestorage.googleapis.com/v0/b/loginsys-b8d67.appspot.com/o/default_avatar.jpg?alt=media&token=7f437efa-c1af-46c6-a652-6445ea259caf";
       $avatar = $getUser['avatar'] == "default_avatar" ? $default_img : "../../image/upload/$id/" . $getUser['avatar'];
       $fullname = ((isset($getUser['fname']) && $getUser['fname'] != "ยังไม่ได้ตั้ง") && (isset($getUser['lname']) && $getUser['lname'] != "ยังไม่ได้ตั้ง"))
     ? $getUser['fname'] . " " . $getUser['lname']
     : "ยังไม่ได้ตั้งชื่อ";
-    $previous_url = $_SERVER['HTTP_REFERER'] ?? '';
-    switch ($previous_url) {
-        case $baseUrl . "show_table_user.php":
-            $url = "show_table_user.php";
-            $p_url = "show_table_user.php";
-            break;
-        case $baseUrl . "admin_info_table.php":
-            $url = "admin_info_table.php";
-            $p_url = "admin_info_table.php";
-            break;
-        case $baseUrl . "user_info_table.php":
-            $url = "user_info_table.php";
-            $p_url = "user_info_table.php";
-            break;
-        case $baseUrl . "all_userInfo_table.php":
-            $url = "all_userInfo_table.php";
-            $p_url = "all_userInfo_table.php";
-            break;
-        default:
-            break;
-    }
+    
     
 ?>
 <!DOCTYPE html>
@@ -55,7 +34,6 @@
 <body>
   <form action="update_user_form.php" method="post">
     <input type="hidden" name="id" value="<?php echo $id ?>" >
-    <input type="hidden" name="p_url" value="<?php echo $p_url ?>" >
     <section class="vh-100" style="background-color: #f4f5f7;">
       <div class="container py-5 h-75">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -97,7 +75,7 @@
              
             </div>
             <div class="d-flex justify-content-end" >
-                        <a href="<?php echo isset($url) ? $url : $p_url ?>" class="btn btn-primary">Back</a>
+                        <a href="show_table_user.php" class="btn btn-primary">Back</a>
                         
             </div>
           </div>

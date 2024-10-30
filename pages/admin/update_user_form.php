@@ -4,9 +4,8 @@ include "footer.php";
 require_once '../../loginCrud/db_config.php';
 
 
-$id = $_POST['id'] ?? '';
-$p_url = $_POST['p_url'];
-$getUser = $user->getSole( $table, $userInfoTable, 'id', 'id',$id );
+$id = $_POST['id'] ?? $_GET['id'] ?? '';
+$getUser = $user->getUserById( $id );
 $default_img = "https://firebasestorage.googleapis.com/v0/b/loginsys-b8d67.appspot.com/o/default_avatar.jpg?alt=media&token=7f437efa-c1af-46c6-a652-6445ea259caf";
 $avatar = $getUser['avatar'] == "default_avatar" ? $default_img : "../../image/upload/$id/" . $getUser['avatar'];
 $fullname = ((isset($getUser['fname']) && $getUser['fname'] != "ยังไม่ได้ตั้ง") && (isset($getUser['lname']) && $getUser['lname'] != "ยังไม่ได้ตั้ง"))
@@ -60,7 +59,7 @@ $fullname = ((isset($getUser['fname']) && $getUser['fname'] != "ยังไม�
                                     <img src="<?php echo $avatar ?>" alt="Avatar" class="img-fluid rounded my-5"
                                         style="width: 80px;" />
                                     <input type="hidden" name="id" value="<?php echo $id ?>">
-                                    <input type="hidden" name="p_url" value="<?php echo $p_url ?>">
+                                   
 
                                     <p><?php echo $fullname ?></p>
                                     <p><?php echo $getUser['role'] == 1 ? "Admin" : "User" ?></p>
@@ -129,7 +128,6 @@ $fullname = ((isset($getUser['fname']) && $getUser['fname'] != "ยังไม�
     <div class="d-flex justify-content-end">
         <form action="update_user_data.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id ?>">
-            <input type="hidden" name="p_url" value="<?php echo $p_url ?>">
             <button type="submit" class="btn btn-primary">Back</button>
         </form>
     </div>

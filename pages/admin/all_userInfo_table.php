@@ -1,11 +1,11 @@
 <?php
 require_once '../../loginCrud/db_config.php';
 include 'header.php';
-$p_url = $_GET['p_url'] ?? '';
+$p_url = $_GET['p_url'] ?? null;
 $center = "style='text-align:center;'";
-$user->set_table($userInfoTable);
-$users = $user->getUserByRole(0);
+$users = $user->getAllfromTable($userInfoTable);
 $default_img = "https://firebasestorage.googleapis.com/v0/b/loginsys-b8d67.appspot.com/o/default_avatar.jpg?alt=media&token=7f437efa-c1af-46c6-a652-6445ea259caf";
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $default_img = "https://firebasestorage.googleapis.com/v0/b/loginsys-b8d67.appsp
 
 <body>
     <div class="container">
-        <h1>User Info Table</h1>
+        <h1>All User Info Table</h1>
         <table class="table" id="userTable">
             <thead>
                 <tr>
@@ -34,9 +34,9 @@ $default_img = "https://firebasestorage.googleapis.com/v0/b/loginsys-b8d67.appsp
                 </tr>
             </thead>
             <?php
-            echo count($users);
+            
             foreach ($users as $user) {
-                $avatar = $user['avatar'] == "default_avatar" ? $default_img : "../../image/upload/".$user['id'] ."/". $user['avatar'];
+                $avatar = $user['avatar'] == "default_avatar" ? $default_img : "../../image/upload/".$user['id']."/" . $user['avatar'];
                 $role = "";
                 if ($user['role'] === 1) {
                     $role = "Admin";
