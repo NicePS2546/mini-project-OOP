@@ -17,7 +17,7 @@
         <a href="" class="btn btn-primary">Insert Data with SQL by Prepared Statement=> :</a>
         <a href="" class="btn btn-primary">Insert Data with SQL by Prepared Statement=> ?</a>
         <a href="" class="btn btn-primary">Insert Data with Form by PDO</a>
-        <a href="" class="btn btn-primary">View Student Data</a> -->
+        <a href="" class="btn btn-primary">View Student Data</a>k -->
     </div>
     
 </div>
