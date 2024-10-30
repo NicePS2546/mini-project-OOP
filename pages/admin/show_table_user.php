@@ -7,7 +7,7 @@ $center = "style='text-align:center;'";
 $users = $user->getAll();
 
 $p_url = $_GET['p_url'] ?? null;
-
+$index = 1;
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +29,7 @@ $p_url = $_GET['p_url'] ?? null;
                     <th <?php echo $center ?>>ID</th>
                     <th <?php echo $center ?>>Username</th>
                     <th <?php echo $center ?>>Email</th>
+                    <th <?php echo $center ?>>Role</th>
                     <th <?php echo $center ?>>Action</th>
                 </tr>
             </thead>
@@ -45,9 +46,10 @@ $p_url = $_GET['p_url'] ?? null;
                 };
 
                 echo "<tbody><tr>
-                    <td $center>" . $user['id'] . "</td>
+                    <td $center>" . $index++ . "</td>
                     <td $center>" . $user['username'] . "</td>
                     <td $center>" . $user['email'] . "</td>
+                    <td $center>" . $role . "</td>
                     ";
 
                 ?>

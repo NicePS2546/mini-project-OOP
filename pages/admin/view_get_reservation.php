@@ -5,7 +5,9 @@ if (!empty($_POST['id'])) {
     $id = $_POST['id'];
     // สร้าง SQL เพื่อดึงข้อมูลจากสองตาราง
     $reserved = $reservation->getRowById($id);
-    
+    $reserved['price'] = number_format($reserved['price'],0);
+    $reserved['taxFee'] = number_format($reserved['taxFee'],0);
+    $reserved['total'] = number_format($reserved['total'],0);
     // ส่งข้อมูลกลับในรูปแบบ JSON
     if ($reserved) { // ถ้าพบข้อมูล
         echo json_encode($reserved); // ส่งข้อมูลกลับในรูปแบบ JSON

@@ -63,12 +63,10 @@ error_reporting(E_ALL);
 
                                     <div class="col-md-12">
                                         <select name="roomType" class="form-select mt-3" required>
-                                            <option selected value="<?php $reservation['roomType'] ?>">
-                                                <?php echo $reservation['roomType'] == 'normal' ? 'ห้องปกติ' : ($reservation['roomType'] == 'deluxe' ? 'ห้อง Deluxe' : 'ห้อง First Class'); ?>
-                                            </option>
-                                            <option value="normal">ห้องปกติ</option>
-                                            <option value="deluxe">ห้อง Deluxe</option>
-                                            <option value="firstClass">ห้อง First Class</option>
+                                           
+                                            <option <?php echo $reservation['roomType'] == "normal" ? "selected" :""  ?> value="normal">ห้องปกติ</option>
+                                            <option <?php echo $reservation['roomType'] == "deluxe" ? "selected" :""  ?> value="deluxe">ห้อง Deluxe</option>
+                                            <option <?php echo $reservation['roomType'] == "firstClass" ? "selected" :""  ?> value="firstClass">ห้อง First Class</option>
                                         </select>
                                         <div class="invalid-feedback">โปรดเลือกห้องที่ท่านต้องการเข้าพัก</div>
                                     </div>
