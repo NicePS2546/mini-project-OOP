@@ -11,7 +11,7 @@ if (!empty($_POST['id'])) {
     if ($reserved) { // ถ้าพบข้อมูล
         echo json_encode($reserved); // ส่งข้อมูลกลับในรูปแบบ JSON
     } else {
-        echo json_encode(['error' => 'Concert not found']);
+        echo json_encode(['error' => 'reserved not found']);
     }
 }else{
     echo '<script>console.log("No ID")</script>';
